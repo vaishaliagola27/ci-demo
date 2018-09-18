@@ -1,0 +1,41 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker: # use the docker executor type; machine and macos executors are also supported
+      # specify the version you desire here
+      - image: rtcamp/ci-deployer
+    steps:
+      - checkout # check out the code in the project directory
+      - save_cache: # Caches dependencies with a cache key
+            # template for an environment variable,
+            # see circleci.com/docs/2.0/caching/
+                key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+                paths:
+                  - ~/circleci-demo-workflows
+      - run:
+          name: PHPCS
+          command: |
+            echo Running phpcs script
+            source ./.circleci/setup-phpcs.sh
+            lint_php_files
+
+  test:
+      docker: # use the docker executor type; machine and macos executors are also supported
+        # specify the version you desire here
+        - image: rtcamp/ci-deployer
+      steps:
+        - checkout # check out the code in the project directory
+        - run: echo "test" # run the `echo` command
+  deploy:
+        docker: # use the docker executor type; machine and macos executors are also supported
+          # specify the version you desire here
+          - image: rtcamp/ci-deployer
+        steps:
+          - checkout # check out the code in the project directory
+          - restore_cache: # Restores the cached dependency.
+            key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          - run: echo "deploy" # run the `echo` command
