@@ -22,5 +22,6 @@ function test() {
 
 		var_dump($var);
 	}
+
 }
 add_action( 'admin_init', 'test' );
