@@ -13,5 +13,14 @@
 
 function test() {
 
+
+	echo "hello";
+	$temp = array('1','2','3');
+
+	foreach( $temp as $var ){
+		echo $var;
+
+		var_dump($var);
+	}
 }
 add_action( 'admin_init', 'test' );
