@@ -10,7 +10,9 @@
  * Text Domain: cicleci-test
  */
 
-
+/**
+ * Test.
+ */
 function test() {
 
 	$temp = array( '1', '2', '3' );
