@@ -30,3 +30,4 @@ jobs:
             echo $CIRCLE_WORKING_DIRECTORY
             echo $HOME
             ls -al
+            pwd
