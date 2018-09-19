@@ -25,4 +25,7 @@ jobs:
       - run:
           name: Deploy
           command: |
-            php ./.circleci/env-test.php
+            export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
+            composer require deployer/recipes vlucas/phpdotenv --dev
+            echo $CIRCLE_WORKING_DIRECTORY
+            echo $HOME
