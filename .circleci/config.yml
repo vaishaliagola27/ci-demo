@@ -23,6 +23,6 @@ jobs:
             source ./.circleci/setup-phpcs.sh
             lint_php_files
       - run:
-        name: Deploy
+          name: Deploy
           command: |
             php ./.circleci/env-test.php
