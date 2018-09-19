@@ -27,5 +27,6 @@ jobs:
           command: |
             export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
             composer require deployer/recipes vlucas/phpdotenv --dev
-            cd $CIRCLE_WORKING_DIRECTORY
+            echo $CIRCLE_WORKING_DIRECTORY
+            echo $HOME
             ls -al
