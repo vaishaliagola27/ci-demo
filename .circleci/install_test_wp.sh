@@ -17,7 +17,7 @@ sed --quiet "s/^DB_HOST=.*/DB_HOST=$DB_HOST/" "$build_root/.env"
 mv "$project_root/.circleci/wp-config.php" "$build_root/wp-config.php"
 mv "$project_root/vendor" "$build_root/"
 wp core install --url=example.com --title=CI --admin_user=ci --admin_password=blahblahblah --admin_email=ci@example.com --allow-root
-rm -rf "$build_root/wp-content/themes/"{twentyfifteen,twentysixteen,twentyseventeen}
+rm -rf "$build_root/wp-content/themes/"{twentyfifteen,twentysixteen}
 wp plugin activate --all --allow-root
 wp eval 'echo "wp verify success";' --allow-root
 rm .env
