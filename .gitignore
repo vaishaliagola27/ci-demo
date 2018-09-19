@@ -1,1 +1,69 @@
+# Debug plugins
+plugins/log-deprecated-notices
+plugins/monster-widget
+plugins/query-monitor
+plugins/user-switching
+
+# Uploads directory
+uploads
+
+# mu-plugins; these are managed at the platform-level
+mu-plugins
+
+# drop-ins; these are managed at the platform-level
+object-cache.php
+db.php
+
+# IDE or OS
 .idea/
+.DS_Store
+#client-mu-plugins/gic-ext
+
+# Log files
+*.log
+
+# WordPress Plugins/Composer
+.env
+plugins/nginx-helper/
+plugins/query-monitor/
+plugins/simple-share-buttons-adder/
+plugins/autoptimize/
+plugins/woocommerce/
+plugins/nginx-helper/
+uploads/
+vendor/
+wordpress/
+wp/
+wp-cli.local.yml
+
+#WordPress specific files
+/wp-content/plugins/hello.php
+/wp-content/index.php
+/wp-content/plugins/index.php
+/wp-content/plugins/akismet/
+/wp-content/themes/twentyfifteen/
+/wp-content/themes/twentysixteen/
+/wp-content/themes/index.php
+/readme.html
+/wp-activate.php
+/wp-admin/
+/wp-blog-header.php
+/wp-comments-post.php
+/wp-config-sample.php
+/wp-cron.php
+/wp-includes/
+/wp-links-opml.php
+/wp-load.php
+/wp-login.php
+/wp-mail.php
+/wp-settings.php
+/wp-signup.php
+/wp-trackback.php
+/xmlrpc.php
+/index.php
+
+# Build artifact
+.grunt
+
+# local
+search-string
