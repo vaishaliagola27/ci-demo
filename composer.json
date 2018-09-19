@@ -16,8 +16,6 @@
   },
   "require-dev": {
     "wp-cli/wp-cli": "^1.0",
-    "deployer/deployer": "^4.0",
-    "deployer/recipes": "^4.0",
     "wpackagist-plugin/query-monitor": "^2.13"
   }
 }
