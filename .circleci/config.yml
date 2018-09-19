@@ -23,19 +23,20 @@ jobs:
             source ./.circleci/setup-phpcs.sh
             lint_php_files
 
-  test:
-      docker: # use the docker executor type; machine and macos executors are also supported
-        # specify the version you desire here
-        - image: rtcamp/ci-deployer
-      steps:
-        - checkout # check out the code in the project directory
-        - run: echo "test" # run the `echo` command
   deploy:
         docker: # use the docker executor type; machine and macos executors are also supported
           # specify the version you desire here
           - image: rtcamp/ci-deployer
+        filters:  # using regex filters requires the entire branch to match
+          branches:
+            only:  # only branches matching the below regex filters will run
+              - develop
+              - ci-test
         steps:
           - checkout # check out the code in the project directory
           - restore_cache: # Restores the cached dependency.
             key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
-          - run: echo "deploy" # run the `echo` command
+          -run:
+            name: Deploy
+            command: |
+              php ./.circleci/env-test.php
