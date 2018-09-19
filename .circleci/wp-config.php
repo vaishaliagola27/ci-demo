@@ -35,14 +35,6 @@ $protocol = isset( $_ENV['HTTPS'] ) ? 'https://' : 'http://';
 define( 'WP_HOME', $_ENV[ 'WP_HOME' ] ? $_ENV[ 'WP_HOME' ] : $protocol . $_ENV['SERVER_NAME'] );
 define( 'WP_SITEURL', $_ENV[ 'WP_SITEURL' ] ? $_ENV[ 'WP_SITEURL' ] : $protocol . $_ENV['SERVER_NAME'] . '/');
 
-
-/**
- * URLs
- */
-// define('WP_HOME', env('WP_HOME'));
-// define('WP_SITEURL', env('WP_SITEURL'));
-// $protocol = ( isset($_ENV['HTTPS']) && in_array(array('on','1'), $_ENV['HTTPS']) ) ? 'https' : ( isset($_ENV['SERVER_PORT'] ) && ( '443' == $_ENV['SERVER_PORT'] ) ) ? 'https' : 'http';
-
 /**
  * Custom Content Directory
  */

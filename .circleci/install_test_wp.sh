@@ -23,7 +23,7 @@ wp eval 'echo "wp verify success";' --allow-root
 rm .env
 mkdir -p "$build_root/wp-content"
 ls -ltr "$project_root/.circleci/"
-rsync -avzPeh --exclude ".git/" "$project_root/" "$build_root/wp-content/"
+rsync -avzeh --exclude ".git/" "$project_root/" "$build_root/wp-content/"
 pushd "$build_root/wp-content" > /dev/null
 rm -r uploads && ln -sn ../../../uploads
 popd > /dev/null
