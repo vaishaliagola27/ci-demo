@@ -32,7 +32,6 @@ set('rsync', [
 		'package-lock.json',
 		'package.json',
 		'screenshot.png',
-		'vendor/deployer',
 		'phpcs.xml'
 	],
 	'exclude-file' => true,
