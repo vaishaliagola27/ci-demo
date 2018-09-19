@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+service mysql start
 source "$PROJECT_ROOT/.circleci/setup_env.sh"
 setup_environment
 
