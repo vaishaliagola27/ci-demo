@@ -22,6 +22,11 @@ jobs:
             echo Running phpcs script
             source ./.circleci/setup-phpcs.sh
             lint_php_files
+      - add_ssh_keys:
+          fingerprints:
+            - "$SSH_FINGERPRINT"
+      - run:
+        command: echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
       - run:
           name: Deploy
           command: |
