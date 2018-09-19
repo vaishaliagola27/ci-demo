@@ -36,7 +36,7 @@ jobs:
           - checkout # check out the code in the project directory
           - restore_cache: # Restores the cached dependency.
             key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
-          -run:
+          - run:
             name: Deploy
             command: |
               php ./.circleci/env-test.php
