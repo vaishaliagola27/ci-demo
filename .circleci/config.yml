@@ -27,7 +27,6 @@ jobs:
           command: |
             export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
             composer require deployer/recipes vlucas/phpdotenv --dev
-            echo $CIRCLE_WORKING_DIRECTORY
-            echo $HOME
-            ls -al
-            pwd
+            export PROJECT_ROOT="$(pwd)"
+            source ./.circleci/install_test_wp.sh
+            mv ./.circleci/deploy.php deploy.php
