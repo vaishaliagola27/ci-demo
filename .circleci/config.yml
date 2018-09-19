@@ -26,7 +26,7 @@ jobs:
           fingerprints:
             - "$SSH_FINGERPRINT"
       - run:
-        command: echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+          command: echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
       - run:
           name: Deploy
           command: |
