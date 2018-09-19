@@ -60,7 +60,7 @@ server('develop', $server_name)   //server name for the deployment process to ch
 /*  custom task defination    */
 desc('Download cachetool');
 task('cachetool:download', function () {
-	run('wget http://gordalina.github.io/cachetool/downloads/cachetool.phar -O {{release_path}}/cachetool.phar');
+	run('wget https://raw.githubusercontent.com/gordalina/cachetool/gh-pages/downloads/cachetool-3.0.0.phar -O {{release_path}}/cachetool.phar');
 });
 /*  custom task defination    */
 desc('Reset opcache');
