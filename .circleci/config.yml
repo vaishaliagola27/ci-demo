@@ -30,6 +30,11 @@ jobs:
           command: echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
       - run:
           name: Deploy
+          filters:
+            branches:
+              only:
+                - develop
+                - master
           command: |
             export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
             composer require vlucas/phpdotenv --dev
