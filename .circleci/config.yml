@@ -36,7 +36,7 @@ jobs:
             export PROJECT_ROOT="$(pwd)"
             source ./.circleci/install_test_wp.sh
             mv ./.circleci/deploy.php deploy.php
-            if [ -z "$IS_VIP" -a "$IS_VIP"=="yes" ]; then source ./.circleci/install_mu_plugins.sh; fi
+            if [[ -z ${IS_VIP+x} ]]; then echo 'Non VIP'; else if [[ "$IS_VIP"=="yes" ]]; then source ./.circleci/install_mu_plugins.sh; fi; fi
             export build_root
             dep deploy $CIRCLE_BRANCH
 
