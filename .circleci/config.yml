@@ -26,6 +26,7 @@ jobs:
           fingerprints:
             - "$SSH_FINGERPRINT"
       - run:
+          name: SSH Key setup
           command: echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
       - run:
           name: Deploy
@@ -35,6 +36,7 @@ jobs:
             export PROJECT_ROOT="$(pwd)"
             source ./.circleci/install_test_wp.sh
             mv ./.circleci/deploy.php deploy.php
+            if [[ -z ${IS_VIP+x} ]]; then echo 'Non VIP'; else if [[ "$IS_VIP"=="yes" ]]; then source ./.circleci/install_mu_plugins.sh; fi; fi
             export build_root
             dep deploy $CIRCLE_BRANCH
 

@@ -41,3 +41,4 @@ Below is the list of variable used in this project.
 - SERVER_USER - User to ssh login( ex. www-data )
 - SSH_FINGERPRINT - SSH fingerprint (private key) to deploy
 - DEP_PATH - directory path to deploy on server
+- IS_VIP - `yes` - This var will be used while deploying mu-plugins. If yes then it will deploy mu-plugins to wp-content.
