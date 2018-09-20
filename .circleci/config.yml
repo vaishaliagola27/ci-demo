@@ -10,12 +10,20 @@ jobs:
       - image: rtcamp/ci-deployer
     steps:
       - checkout # check out the code in the project directory
+      - restore_cache: # Caches dependencies with a cache key
+          # template for an environment variable,
+          # see circleci.com/docs/2.0/caching/
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - vendor
+            - ~/.composer/cache
       - save_cache: # Caches dependencies with a cache key
-            # template for an environment variable,
-            # see circleci.com/docs/2.0/caching/
-                key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
-                paths:
-                  - ~/circleci-demo-workflows
+          # template for an environment variable,
+          # see circleci.com/docs/2.0/caching/
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - vendor
+            - ~/.composer/cache
       - run:
           name: PHPCS
           command: |
@@ -28,12 +36,20 @@ jobs:
           - image: rtcamp/ci-deployer
     steps:
       - checkout # check out the code in the project directory
+      - restore_cache: # Caches dependencies with a cache key
+          # template for an environment variable,
+          # see circleci.com/docs/2.0/caching/
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - vendor
+            - ~/.composer/cache
       - save_cache: # Caches dependencies with a cache key
-            # template for an environment variable,
-            # see circleci.com/docs/2.0/caching/
-                key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
-                paths:
-                  - ~/circleci-demo-workflows
+          # template for an environment variable,
+          # see circleci.com/docs/2.0/caching/
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - vendor
+            - ~/.composer/cache
       - add_ssh_keys:
           fingerprints:
             - "$SSH_FINGERPRINT"
