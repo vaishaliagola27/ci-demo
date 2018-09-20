@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 printf "[\e[0;34mNOTICE\e[0m] Setting up SSH access to server.\n"
 
 mkdir -p ~/.ssh

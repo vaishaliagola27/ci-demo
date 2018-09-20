@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function remove_diff_range {
   sed 's/:[0-9][0-9]*-[0-9][0-9]*$//' | sort | uniq

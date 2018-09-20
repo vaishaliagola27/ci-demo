@@ -18,5 +18,11 @@
     "wp-cli/wp-cli": "^1.0",
     "wpackagist-plugin/query-monitor": "^2.13",
     "vlucas/phpdotenv": "^2.5"
+  },
+  "extra": {
+    "installer-paths": {
+      "plugins/{$name}/": ["type:wordpress-plugin"],
+      "themes/{$name}/": [ "type:wordpress-theme"]
+    }
   }
 }

@@ -35,6 +35,7 @@ jobs:
             export PROJECT_ROOT="$(pwd)"
             source ./.circleci/install_test_wp.sh
             mv ./.circleci/deploy.php deploy.php
+            if $IS_VIP == "yes"; then source ./.circleci/install_mu_plugins.sh; fi
             export build_root
             dep deploy $CIRCLE_BRANCH
 
