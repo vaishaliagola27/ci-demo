@@ -26,11 +26,6 @@ jobs:
     docker: # use the docker executor type; machine and macos executors are also supported
           # specify the version you desire here
           - image: rtcamp/ci-deployer
-    filters:
-        branches:
-          only:
-            - develop
-            - master
     steps:
       - checkout # check out the code in the project directory
       - save_cache: # Caches dependencies with a cache key
@@ -61,4 +56,11 @@ workflows:
     build_and_deploy:
        jobs:
          - build
-         - deploy
+         - deploy:
+            requires:
+              - build
+            filters:
+              branches:
+                only:
+                  - develop
+                  - master
