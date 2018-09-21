@@ -23,10 +23,10 @@ This demo deploys to server using deployer and circle-ci. Follow below steps to 
 - Click on Add Projects, then click on Set up Project for which directory you want setup
 - Click on Start building
 - GO TO Settings->Projects
-- Click on project settings from followed projects
-- Create a SSH Key without passphrase
+- Click on project `setting` icon listed under `Followed Projects` title
+- Create a SSH Key without passphrase ( `ssh-keygen -t rsa -b 4096 -C circleci-key` )
 - In _SSH Permissions_ menu, click on `Add SSH Key` and add private key created in above step
-- Add public key to knownhosts on server to run deployer
+- Add public key to `knownhosts` on server to run deployer
 
 **ENVIRONMENT Variables**
 
@@ -39,6 +39,6 @@ Below is the list of variable used in this project.
 
 - SERVER_NAME - Server name to deploy
 - SERVER_USER - User to ssh login( ex. www-data )
-- SSH_FINGERPRINT - SSH fingerprint (private key) to deploy
-- DEP_PATH - directory path to deploy on server
+- SSH_FINGERPRINT - SSH fingerprint (private key) to deploy ( saved in circleci SSH keys )
+- DEP_PATH - directory path to deploy on server ( Mostly `htdocs` path will come here )
 - IS_VIP - `yes` - This var will be used while deploying mu-plugins. If yes then it will deploy mu-plugins to wp-content.
