@@ -7,7 +7,7 @@ jobs:
   build:
     docker: # use the docker executor type; machine and macos executors are also supported
       # specify the version you desire here
-      - image: vaishu27/ci-deployer-wp:v0.1
+      - image: vaishu27/ci-deployer-wp:v0.1.1
     steps:
       - checkout # check out the code in the project directory
       - restore_cache: # Caches dependencies with a cache key
