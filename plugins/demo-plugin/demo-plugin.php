@@ -15,9 +15,9 @@
 /**
  * Test.
  */
-function test(){
+function test() {
 
-	echo "dump here";
+	echo esc_html( 'dump here' );
 
 }
 
