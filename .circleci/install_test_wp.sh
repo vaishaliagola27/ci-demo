@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-service mysql start
+#service mysql start
 source "$PROJECT_ROOT/.circleci/setup_env.sh"
 setup_environment
 
@@ -14,7 +14,7 @@ sed --quiet "s/^DB_NAME=.*/DB_NAME=$DB_NAME/" "$build_root/.env"
 sed --quiet "s/^DB_USER=.*/DB_USER=$DB_NAME/" "$build_root/.env"
 sed --quiet "s/^DB_PASSWORD=.*/DB_PASSWORD=$DB_PASSWORD/" "$build_root/.env"
 sed --quiet "s/^DB_HOST=.*/DB_HOST=$DB_HOST/" "$build_root/.env"
-cat "$build_root/.env"
+
 mv "$project_root/.circleci/wp-config.php" "$build_root/wp-config.php"
 mv "$project_root/vendor" "$build_root/"
 wp core install --url=example.com --title=CI --admin_user=ci --admin_password=blahblahblah --admin_email=ci@example.com --allow-root
