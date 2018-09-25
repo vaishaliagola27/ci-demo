@@ -15,13 +15,9 @@
 /**
  * Test.
  */
-function test() {
+function test(){
 
-	$temp = array( '1', '2', '3' );
-
-	foreach ( $temp as $var ) {
-		echo esc_html( $var );
-	}
+	echo "dump here";
 
 }
 
