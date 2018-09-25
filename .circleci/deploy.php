@@ -6,7 +6,7 @@ set('ssh_multiplexing', true);
 if (file_exists('vendor/deployer/recipes/rsync.php')) {
 	require 'vendor/deployer/recipes/rsync.php';
 } else {
-	require getenv('COMPOSER_HOME') . '/vendor/deployer/recipes/rsync.php';
+	require getenv('COMPOSER_HOME') . '/vendor/deployer/recipes/recipe/rsync.php';
 }
 set('writable_dirs', [
 	'wp-content'
@@ -52,12 +52,14 @@ $user        = getenv( 'SERVER_USER' );
 $dep_path    = getenv( 'DEP_PATH' );
 
 /* list the servers and deployment path with other details*/
-server('develop', $server_name)   //server name for the deployment process to choose from  and dns name or ip address to the server, must be pointable from the internet
+host('develop')   //server name for the deployment process to choose from  and dns name or ip address to the server, must be pointable from the internet
+->hostname($server_name)
 ->user($user)          //the user with which files are to be copied, as EE uses www-data it wont change
 ->identityFile('~/.ssh/id_rsa.pub', '~/.ssh/id_rsa')    // identification files, wont change
 ->set('deploy_path', $dep_path);        // deployment path
 
-server('master', $server_name)   //server name for the deployment process to choose from  and dns name or ip address to the server, must be pointable from the internet
+host('master')   //server name for the deployment process to choose from  and dns name or ip address to the server, must be pointable from the internet
+->hostname($server_name)
 ->user($user)          //the user with which files are to be copied, as EE uses www-data it wont change
 ->identityFile('~/.ssh/id_rsa.pub', '~/.ssh/id_rsa')    // identification files, wont change
 ->set('deploy_path', $dep_path);        // deployment path
