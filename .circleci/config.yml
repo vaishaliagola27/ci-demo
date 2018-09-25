@@ -87,4 +87,3 @@ workflows:
                 only:
                   - develop
                   - master
-                  - ci-test
