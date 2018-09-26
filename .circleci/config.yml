@@ -64,6 +64,9 @@ jobs:
           name: SSH Key setup
           command: echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
       - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run:
           name: Deploy
           command: |
             export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
