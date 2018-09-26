@@ -47,7 +47,7 @@ set('rsync', [
 set('rsync_src', getenv('build_root'));
 set('rsync_dest', '{{release_path}}');
 
-$server_details = getenv( 'SERVER_DETAILS' );
+$server_details = json_decode( getenv( 'SERVER_DETAILS' ) );
 
 foreach ( $server_details as $branch => $detail ) {
 
