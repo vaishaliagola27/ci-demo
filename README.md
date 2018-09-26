@@ -53,8 +53,24 @@ We can access them in two ways
 
 Below is the list of variable used in this project.
 
-- SERVER_NAME - Server name to deploy( ex. test.subdomain.com )
-- SERVER_USER - User to ssh login( ex. www-data )
 - SSH_FINGERPRINT - SSH fingerprint (private key) to deploy ( saved in circleci SSH keys )
-- DEP_PATH - directory path to deploy on server ( ex. /var/www/example.com/htdocs )
 - IS_VIP - `yes` - This var will be used while deploying mu-plugins. If yes then it will deploy mu-plugins to wp-content.
+- SERVER_DETAILS - This variable contains multiple server details for deployer in `JSON` format.
+    - array key( master,develop ) - branch name or server to deploy
+    - server - Server name to deploy
+    - user - User to ssh login
+    - path - directory path to deploy on server
+    - Example - Below is correct form of JSON data to store.
+   ```{
+     "master": {
+       "server": "test.subdomain.com",
+       "user": "www-data",
+       "path": "/var/www/test.subdomain.com/htdocs"
+     },
+     "develop": {
+       "server": "demo.subdomain.com",
+       "user": "www-data",
+       "path": "/var/www/demo.subdomain.com/htdocs"
+     }
+   }
+   ```
