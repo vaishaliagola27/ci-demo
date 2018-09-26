@@ -47,22 +47,18 @@ set('rsync', [
 set('rsync_src', getenv('build_root'));
 set('rsync_dest', '{{release_path}}');
 
-$server_name = getenv( 'SERVER_NAME' );
-$user        = getenv( 'SERVER_USER' );
-$dep_path    = getenv( 'DEP_PATH' );
+$server_details = getenv( 'SERVER_DETAILS' );
 
-/* list the servers and deployment path with other details*/
-host('develop')   //server name for the deployment process to choose from  and dns name or ip address to the server, must be pointable from the internet
-->hostname($server_name)
-->user($user)          //the user with which files are to be copied, as EE uses www-data it wont change
-->identityFile('~/.ssh/id_rsa.pub', '~/.ssh/id_rsa')    // identification files, wont change
-->set('deploy_path', $dep_path);        // deployment path
+foreach ( $server_details as $branch => $detail ) {
 
-host('master')   //server name for the deployment process to choose from  and dns name or ip address to the server, must be pointable from the internet
-->hostname($server_name)
-->user($user)          //the user with which files are to be copied, as EE uses www-data it wont change
-->identityFile('~/.ssh/id_rsa.pub', '~/.ssh/id_rsa')    // identification files, wont change
-->set('deploy_path', $dep_path);        // deployment path
+	/* list the servers and deployment path with other details*/
+	host( $branch )   //server name for the deployment process to choose from  and dns name or ip address to the server, must be pointable from the internet
+	->hostname($detail->server)
+	->user($detail->user)          //the user with which files are to be copied, as EE uses www-data it wont change
+	->identityFile('~/.ssh/id_rsa.pub', '~/.ssh/id_rsa')    // identification files, wont change
+	->set('deploy_path', $detail->path);        // deployment path
+
+}
 
 /*  custom task defination    */
 desc('Download cachetool');
