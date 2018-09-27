@@ -69,9 +69,6 @@ jobs:
           environment:
             DOCKERIZE_VERSION: v0.3.0
       - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:3306 -timeout 1m
-      - run:
           name: Deploy
           command: |
             export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
