@@ -59,7 +59,7 @@ jobs:
             - ~/.composer/cache
       - add_ssh_keys:
           fingerprints:
-            - "$SSH_FINGERPRINT"
+            - php -f ./.circleci/setup-ssh.php
       - run:
           name: SSH Key setup
           command: echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
