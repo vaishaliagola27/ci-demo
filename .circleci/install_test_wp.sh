@@ -22,9 +22,9 @@ rm -rf "$build_root/wp-content/themes/"{twentyfifteen,twentysixteen}
 wp plugin activate --all --allow-root
 wp eval 'echo "wp verify success";' --allow-root
 rm .env
-mkdir -p "$build_root/wp-content"
+
 ls -ltr "$project_root/.circleci/"
-rsync -azeh --exclude ".git/" "$project_root/" "$build_root/wp-content/"
+rsync -azeh --exclude ".git/" "$project_root/" "$build_root/"
 pushd "$build_root/wp-content" > /dev/null
 rm -r uploads && ln -sn ../../../uploads
 popd > /dev/null
