@@ -65,7 +65,7 @@ if ( ! empty( $file_content ) && is_array( $file_content ) && json_last_error() 
 
 }
 
-if ( json_last_error() === JSON_ERROR_NONE ) {
+if ( json_last_error() === JSON_ERROR_NONE && ! empty( $server_details ) && is_array( $server_details ) ) {
 
 	foreach ( $server_details as $branch => $detail ) {
 
@@ -77,6 +77,11 @@ if ( json_last_error() === JSON_ERROR_NONE ) {
 		->set('deploy_path', $detail['path']);        // deployment path
 
 	}
+
+} else {
+
+	echo "Server details are not configured properly. Please check server.json or set SERVER_DETAILS environment variable!";
+	exit(1);
 
 }
 
