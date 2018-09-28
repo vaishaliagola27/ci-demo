@@ -47,20 +47,41 @@ set('rsync', [
 set('rsync_src', getenv('build_root'));
 set('rsync_dest', '{{release_path}}');
 
-$server_details = json_decode( getenv( 'SERVER_DETAILS' ) );
+$file_content ='';
 
-if ( json_last_error() === JSON_ERROR_NONE ) {
+if ( file_exists( './.circleci/server.json' ) ) {
+
+	$file_content = json_decode( file_get_contents ("./.circleci/server.json"), true );
+
+}
+
+if ( ! empty( $file_content ) && is_array( $file_content ) && json_last_error() === JSON_ERROR_NONE ) {
+
+	$server_details = $file_content;
+
+} else {
+
+	$server_details = json_decode( getenv( 'SERVER_DETAILS' ), true );
+
+}
+
+if ( json_last_error() === JSON_ERROR_NONE && ! empty( $server_details ) && is_array( $server_details ) ) {
 
 	foreach ( $server_details as $branch => $detail ) {
 
 		/* list the servers and deployment path with other details*/
 		host( $branch )   //server name for the deployment process to choose from  and dns name or ip address to the server, must be pointable from the internet
-		->hostname($detail->srv)
-		->user($detail->user)          //the user with which files are to be copied, as EE uses www-data it wont change
+		->hostname($detail['server'])
+		->user($detail['user'])          //the user with which files are to be copied, as EE uses www-data it wont change
 		->identityFile('~/.ssh/id_rsa.pub', '~/.ssh/id_rsa')    // identification files, wont change
-		->set('deploy_path', $detail->path);        // deployment path
+		->set('deploy_path', $detail['path']);        // deployment path
 
 	}
+
+} else {
+
+	echo "Server details are not configured properly. Please check server.json or set SERVER_DETAILS environment variable!";
+	exit(1);
 
 }
 
