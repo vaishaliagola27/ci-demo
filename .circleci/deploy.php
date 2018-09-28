@@ -62,7 +62,7 @@ if ( ! empty( $file_content ) && json_last_error() === JSON_ERROR_NONE ) {
 	$server_details = json_decode( getenv( 'SERVER_DETAILS' ), true );
 
 }
-
+print_r( $server_details, true );
 if ( json_last_error() === JSON_ERROR_NONE ) {
 
 	foreach ( $server_details as $branch => $detail ) {
