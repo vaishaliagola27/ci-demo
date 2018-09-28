@@ -47,9 +47,11 @@ set('rsync', [
 set('rsync_src', getenv('build_root'));
 set('rsync_dest', '{{release_path}}');
 
-if ( file_exists( 'server.json' ) ) {
+$file_content ='';
 
-	$file_content = json_decode( file_get_contents ("server.json") );
+if ( file_exists( './.circleci/server.json' ) ) {
+
+	$file_content = json_decode( file_get_contents ("./.circleci/server.json") );
 
 }
 
