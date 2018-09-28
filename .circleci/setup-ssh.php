@@ -23,6 +23,8 @@ if ( json_last_error() === JSON_ERROR_NONE ) {
 
 	// Send key value if key is set in server details variable
 	if ( isset( $server_keys[ $current_branch ] ) && ! empty( $server_keys[ $current_branch ]['key'] ) ) {
+		echo "here";
+		echo $server_keys[ $current_branch ]['key'];
 		return $server_keys[ $current_branch ]['key'];
 	} else {
 		return $default_key;

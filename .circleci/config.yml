@@ -71,7 +71,6 @@ jobs:
       - run:
           name: Deploy
           command: |
-            ls -al
             php -f ./.circleci/setup-ssh.php
             export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
             composer require vlucas/phpdotenv --dev
