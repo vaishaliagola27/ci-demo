@@ -55,9 +55,9 @@ Below is the list of variable used in this project.
 
 - SSH_FINGERPRINT - SSH fingerprint (private key) to deploy ( saved in circleci SSH keys ). This will be default if server specified key is not set.
 - IS_VIP - `yes` - This var will be used while deploying mu-plugins. If yes then it will deploy mu-plugins to wp-content.
-- SERVER_DETAILS - This variable contains multiple server details for deployer in `JSON` format.
+- SERVER_DETAILS - This variable contains multiple server details for deployer in `JSON` format. You can also add this same details in `server.json` file if don't want to use environment variable.
     - array key( master,develop ) - branch name or server to deploy
-    - srv - Server name to deploy
+    - server - Server name to deploy
     - user - User to ssh login
     - path - directory path to deploy on server
     - key - SSH key fingerprint for particular server to deploy
@@ -65,13 +65,13 @@ Below is the list of variable used in this project.
    ```
    {
      "master": {
-       "srv": "test.subdomain.com",
+       "server": "test.subdomain.com",
        "user": "www-data",
        "path": "/var/www/test.subdomain.com/htdocs",
        "key": "59:by:d9:38:83:9d:h9:d7:6a:3r"
      },
      "develop": {
-       "srv": "demo.subdomain.com",
+       "server": "demo.subdomain.com",
        "user": "www-data",
        "path": "/var/www/demo.subdomain.com/htdocs",
        "key": "59:by:d9:38:83:9d:h9:d7:6a:3h"
