@@ -66,7 +66,7 @@ jobs:
       - run:
           name: Deploy
           command: |
-            composer require vlucas/phpdotenv --dev
+            composer install --no-dev
             cat composer.json
             export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
             export PROJECT_ROOT="$(pwd)"
