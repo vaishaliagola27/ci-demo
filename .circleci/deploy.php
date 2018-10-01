@@ -94,9 +94,6 @@ task( 'stage-test2', function () {
 /*   deployment task   */
 desc('Deploy the project');
 task('deploy', [
-	'stage-test2',
-	'stage-test',
-	'master-test2',
 	'deploy:prepare',
 	'deploy:unlock',
 	'deploy:lock',
