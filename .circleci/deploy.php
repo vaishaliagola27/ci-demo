@@ -89,14 +89,14 @@ task( 'stage-test', function () {
 
 	$output = run( 'ls' );
 	writeln( '<info>' . $output . '</info>' );
-} )->onlyOn( [ 'ci-test' ] );
+} )->onStage( [ 'ci-test' ] );
 
 desc( 'Test stages 2' );
 task( 'stage-test2', function () {
 
 	$output = run( 'ls -al' );
 	writeln( '<info>' . $output . '</info>' );
-} )->onlyOn( [ 'citest' ] );
+} )->onStage( [ 'citest' ] );
 
 /*   deployment task   */
 desc('Deploy the project');
