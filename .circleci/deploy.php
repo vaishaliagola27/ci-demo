@@ -98,15 +98,24 @@ task( 'stage-test2', function () {
 	writeln( '<info>' . $output . '</info>' );
 } )->onStage( [ 'citest' ] );
 
+desc( 'master test' );
+task( 'master-test2', function () {
+
+	$output = run( 'ls -al' );
+	writeln( '<info>' . $output . '</info>' );
+} )->onStage( [ 'master' ] );
+
 /*   deployment task   */
 desc('Deploy the project');
 task('deploy', [
+	'stage-test2',
+	'stage-test',
+	'master-test2',
 	'deploy:prepare',
 	'deploy:unlock',
 	'deploy:lock',
 	'deploy:release',
 	'rsync',
-	//   'uploads:sync',
 	'cachetool:download',
 	'deploy:symlink',
 	'opcache:reset',
