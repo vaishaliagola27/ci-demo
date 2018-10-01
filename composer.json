@@ -17,8 +17,7 @@
   "require-dev": {
     "wp-cli/wp-cli": "^1.0",
     "wpackagist-plugin/query-monitor": "^2.13",
-    "aaemnnosttv/wp-cli-dotenv-command": "^1.0",
-    "vlucas/phpdotenv": "^2.5"
+    "aaemnnosttv/wp-cli-dotenv-command": "^1.0"
   },
   "extra": {
     "installer-paths": {
