@@ -76,12 +76,27 @@ desc('Download cachetool');
 task('cachetool:download', function () {
 	run('wget https://raw.githubusercontent.com/gordalina/cachetool/gh-pages/downloads/cachetool-3.0.0.phar -O {{release_path}}/cachetool.phar');
 });
+
 /*  custom task defination    */
 desc('Reset opcache');
 task('opcache:reset', function () {
 	$output = run('php {{release_path}}/cachetool.phar opcache:reset --fcgi=127.0.0.1:9070');
 	writeln('<info>' . $output . '</info>');
 });
+
+desc( 'Test stages' );
+task( 'stage-test', function () {
+
+	$output = run( 'ls' );
+	writeln( '<info>' . $output . '</info>' );
+} )->onlyOn( [ 'ci-test' ] );
+
+desc( 'Test stages 2' );
+task( 'stage-test2', function () {
+
+	$output = run( 'ls -al' );
+	writeln( '<info>' . $output . '</info>' );
+} )->onlyOn( [ 'citest' ] );
 
 /*   deployment task   */
 desc('Deploy the project');
