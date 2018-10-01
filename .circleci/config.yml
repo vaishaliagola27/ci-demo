@@ -71,8 +71,8 @@ jobs:
       - run:
           name: Deploy
           command: |
+            composer install --no-dev
             export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
-            composer require vlucas/phpdotenv --dev
             export PROJECT_ROOT="$(pwd)"
             source ./.circleci/install_test_wp.sh
             mv ./.circleci/deploy.php deploy.php
