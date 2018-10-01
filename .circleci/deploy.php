@@ -1,13 +1,16 @@
 <?php
 namespace Deployer;
 require 'recipe/common.php';        //adds common necessities for the deployment
+
 set('ssh_type', 'native');
 set('ssh_multiplexing', true);
+
 if (file_exists('vendor/deployer/recipes/rsync.php')) {
 	require 'vendor/deployer/recipes/rsync.php';
 } else {
 	require getenv('COMPOSER_HOME') . '/vendor/deployer/recipes/recipe/rsync.php';
 }
+
 set('writable_dirs', [
 	'wp-content'
 ]);
@@ -90,6 +93,7 @@ desc('Download cachetool');
 task('cachetool:download', function () {
 	run('wget https://raw.githubusercontent.com/gordalina/cachetool/gh-pages/downloads/cachetool-3.0.0.phar -O {{release_path}}/cachetool.phar');
 });
+
 /*  custom task defination    */
 desc('Reset opcache');
 task('opcache:reset', function () {
@@ -105,7 +109,6 @@ task('deploy', [
 	'deploy:lock',
 	'deploy:release',
 	'rsync',
-	//   'uploads:sync',
 	'cachetool:download',
 	'deploy:symlink',
 	'opcache:reset',
