@@ -72,6 +72,7 @@ jobs:
           name: Deploy
           command: |
             composer install --no-dev
+            tree -v --charset utf-8
             export PATH="$PATH:$COMPOSER_HOME/vendor/bin"
             export PROJECT_ROOT="$(pwd)"
             source ./.circleci/install_test_wp.sh
